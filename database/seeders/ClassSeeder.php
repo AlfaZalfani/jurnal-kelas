@@ -15,6 +15,6 @@ class ClassSeeder extends Seeder
     {
         DB::table('class')->insert([
         	'class_name' => 'Reza',
-        	
+        ]);
     }
 }

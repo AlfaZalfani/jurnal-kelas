@@ -5,9 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TeacherModel extends Model
+class SubjectModel extends Model
 {
     use HasFactory;
+
+    protected $table = 'subjects';
+
+    protected $fillable = [
+        'teacher_id',
+        'name',
+    ];
 
     public function teachers()
     {
