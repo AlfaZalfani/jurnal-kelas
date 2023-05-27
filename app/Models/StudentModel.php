@@ -11,10 +11,10 @@ class TeacherModel extends Model
 
     public function class()
     {
-        return $this->hasOne(ClassModel::class, 'class_id','id');
+        return $this->belongsTo(ClassModel::class, 'student_id','id');
     }
     public function users()
     {
-        return $this->hasOne(UserModel::class, 'user_id','id');
+        return $this->hasOne(User::class, 'user_id','id');
     }
 }

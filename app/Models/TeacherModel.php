@@ -15,10 +15,10 @@ class TeacherModel extends Model
     }
     public function subjects()
     {
-        return $this->belongsTo(SubjectModel::class, 'teacher_id','id');
+        return $this->hasOne(SubjectModel::class, 'teacher_id','id');
     }
     public function users()
     {
-        return $this->hasOne(UserModel::class, 'user_id','id');
+        return $this->hasOne(User::class, 'user_id','id');
     }
 }
