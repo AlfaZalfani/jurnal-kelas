@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\ClassModel;
+use App\Utilities\Constants;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class ClassSeeder extends Seeder
 {
@@ -13,8 +14,16 @@ class ClassSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('class')->insert([
-        	'class_name' => 'Reza',
-        ]);
+        // jurusan
+        $departments = Constants::DEPARTMENT;
+        $grades = Constants::GRADE;
+
+        foreach ($grades as $grade) {
+            foreach ($departments as $department) {
+                ClassModel::insert([
+                    'name' => "{$grade['name']} {$department['name']}",
+                ]);
+            }
+        }
     }
 }
