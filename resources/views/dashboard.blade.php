@@ -3,6 +3,9 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
             <a href="{{ route('students.index') }}">Students</a>
+            <a href="{{ route('classes.index') }}">Classes</a>
+            <a href="{{ route('journals.index') }}">Journals</a>
+            <a href="{{ route('teachers.index') }}">Teachers</a>
         </h2>
     </x-slot>
 
