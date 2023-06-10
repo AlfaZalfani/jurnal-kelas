@@ -6,7 +6,6 @@ use App\Models\SubjectModel;
 use App\Utilities\Constants;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use PragmaRX\Google2FA\Support\Constants as SupportConstants;
 
 class SubjectsSeeder extends Seeder
 {
@@ -19,7 +18,7 @@ class SubjectsSeeder extends Seeder
 
         foreach ($subjects as $subject) {
             SubjectModel::insert([
-                'subject_name' => $subject['name'],
+                'name' => $subject['name'],
             ]);
         }
     }

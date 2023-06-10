@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subjects', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('teacher_id')->nullable()->index('fk_subjects_to_teachers');
-            //still need to check
-            $table->string('subject_name');
-            $table->timestamps();
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->foreign('teacher_id', 'fk_subjects_to_teachers')->references('id')->on('teachers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subjects');
+        Schema::table('subjects', function (Blueprint $table) {
+            $table->dropForeign('fk_subjects_to_teachers');
+        });
     }
 };

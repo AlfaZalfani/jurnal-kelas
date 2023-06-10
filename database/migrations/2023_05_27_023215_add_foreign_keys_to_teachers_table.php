@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('class', function (Blueprint $table) {
-            $table->id();
-            // still need to check
-            $table->string('class_name');
-            $table->timestamps();
+        Schema::table('teachers', function (Blueprint $table) {
+            $table->foreign('user_id', 'fk_teachers_to_users')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('class');
+        Schema::table('teachers', function (Blueprint $table) {
+            $table->dropForeign('fk_teachers_to_users');
+        });
     }
 };

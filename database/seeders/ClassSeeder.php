@@ -21,7 +21,7 @@ class ClassSeeder extends Seeder
         foreach ($grades as $grade) {
             foreach ($departments as $department) {
                 ClassModel::insert([
-                    'class_name' => "{$grade['name']} {$department['name']}",
+                    'name' => "{$grade['name']} {$department['name']}",
                 ]);
             }
         }

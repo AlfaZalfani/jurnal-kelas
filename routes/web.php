@@ -30,18 +30,58 @@ Route::middleware([
 });
 
 Route::prefix('students')->name('students.')->group(function () {
-    Route::name('index')->get('index', \App\Http\Livewire\Students\Index::class);
+    Route::get('/', \App\Http\Livewire\Students\Index::class)->name('index');
+    Route::get('/create', \App\Http\Livewire\Students\Create::class)->name('create');
+    Route::get('/detail', \App\Http\Livewire\Students\Detail::class)->name('detail');
 });
-Route::prefix('subjects')->name('subjects.')->group(function () {
-    Route::name('index')->get('index', \App\Http\Livewire\Subjects\Index::class);
-});
+
+// Class
 Route::prefix('classes')->name('classes.')->group(function () {
-    Route::name('index')->get('index', \App\Http\Livewire\Classes\Index::class);
+    Route::get('/', \App\Http\Livewire\Classes\Index::class)->name('index');
+    Route::get('/create', \App\Http\Livewire\Classes\Create::class)->name('create');
+    Route::get('/detail', \App\Http\Livewire\Classes\Detail::class)->name('detail');
 });
-Route::prefix('journals')->name('journals.')->group(function () {
-    Route::name('index')->get('index', \App\Http\Livewire\Journals\Index::class);
+
+// Journal
+Route::prefix('journal')->name('journal.')->group(function () {
+    Route::get('/', \App\Http\Livewire\Journal\Index::class)->name('index');
+    Route::get('/create', \App\Http\Livewire\Journal\Create::class)->name('create');
+    Route::get('/detail', \App\Http\Livewire\Journal\Detail::class)->name('detail');
 });
-Route::prefix('teachers')->name('teachers.')->group(function () {
-    Route::name('index')->get('index', \App\Http\Livewire\Teachers\Index::class);
+
+
+// Teacher
+Route::prefix('teacher')->name('teacher.')->group(function () {
+    Route::get('/', \App\Http\Livewire\Teacher\Index::class)->name('index');
+    Route::get('/create', \App\Http\Livewire\Teacher\Create::class)->name('create');
+    Route::get('/detail', \App\Http\Livewire\Teacher\Detail::class)->name('detail');
+});
+
+// Subject
+Route::prefix('subject')->name('subject.')->group(function () {
+    Route::get('/', \App\Http\Livewire\Subject\Index::class)->name('index');
+    Route::get('/create', \App\Http\Livewire\Subject\Create::class)->name('create');
+    Route::get('/detail', \App\Http\Livewire\Subject\Detail::class)->name('detail');
+});
+
+Route::prefix('user-management')->name('user-management.')->group(function () {
+    //permision
+        Route::prefix('permission')->name('permission.')->group(function () {
+            Route::get('/', \App\Http\Livewire\UserManagement\permission\index::class)->name('index');
+            Route::get('/create', \App\Http\Livewire\UserManagement\permission\create::class)->name('create');
+            Route::get('/detail', \App\Http\Livewire\UserManagement\permission\detail::class)->name('detail');
+        });
+   //Role
+        Route::prefix('role')->name('role.')->group(function () {
+            Route::get('/', \App\Http\Livewire\UserManagement\role\index::class)->name('index');
+            Route::get('/create', \App\Http\Livewire\UserManagement\role\create::class)->name('create');
+            Route::get('/detail', \App\Http\Livewire\UserManagement\role\detail::class)->name('detail');
+        });
+   //user
+        Route::prefix('user')->name('user.')->group(function () {
+            Route::get('/', \App\Http\Livewire\UserManagement\user\index::class)->name('index');
+            Route::get('/create', \App\Http\Livewire\UserManagement\user\create::class)->name('create');
+            Route::get('/detail', \App\Http\Livewire\UserManagement\user\detail::class)->name('detail');
+        });
 });
 
