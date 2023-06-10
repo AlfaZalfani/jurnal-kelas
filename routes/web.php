@@ -29,6 +29,38 @@ Route::middleware([
     //student disini
 });
 
-Route::prefix('students')->name('students.')->group(function () {
-    Route::name('index')->get('index', \App\Http\Livewire\Students\Index::class);
-});
+    // Students
+    Route::prefix('student')->name('student.')->group(function () {
+        Route::get('/', \App\Http\Livewire\Student\Index::class)->name('index');
+        Route::get('/create', \App\Http\Livewire\Student\Create::class)->name('create');
+        Route::get('/detail', \App\Http\Livewire\Student\Detail::class)->name('detail');
+    });
+
+    // Class
+    Route::prefix('classes')->name('classes.')->group(function () {
+        Route::get('/', \App\Http\Livewire\Classes\Index::class)->name('index');
+        Route::get('/create', \App\Http\Livewire\Classes\Create::class)->name('create');
+        Route::get('/detail', \App\Http\Livewire\Classes\Detail::class)->name('detail');
+    });
+
+    // Journal
+    Route::prefix('journal')->name('journal.')->group(function () {
+        Route::get('/', \App\Http\Livewire\Journal\Index::class)->name('index');
+        Route::get('/create', \App\Http\Livewire\Journal\Create::class)->name('create');
+        Route::get('/detail', \App\Http\Livewire\Journal\Detail::class)->name('detail');
+    });
+
+
+    // Teacher
+    Route::prefix('teacher')->name('teacher.')->group(function () {
+        Route::get('/', \App\Http\Livewire\Teacher\Index::class)->name('index');
+        Route::get('/create', \App\Http\Livewire\Teacher\Create::class)->name('create');
+        Route::get('/detail', \App\Http\Livewire\Teacher\Detail::class)->name('detail');
+    });
+
+    // Subject
+    Route::prefix('subject')->name('subject.')->group(function () {
+        Route::get('/', \App\Http\Livewire\Subject\Index::class)->name('index');
+        Route::get('/create', \App\Http\Livewire\Subject\Create::class)->name('create');
+        Route::get('/detail', \App\Http\Livewire\Subject\Detail::class)->name('detail');
+    });
