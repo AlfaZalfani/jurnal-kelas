@@ -18,7 +18,7 @@ class SubjectsSeeder extends Seeder
 
         foreach ($subjects as $subject) {
             SubjectModel::insert([
-                'name' => $subject['name'],
+                'subject_name' => $subject['name'],
             ]);
         }
     }
